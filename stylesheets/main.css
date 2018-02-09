@@ -1,3 +1,23 @@
+/* Project-Specs
+Header-Text : Roboto Slab 700 / serif
+Body-Text : Open Sans / sans-serif
+
+Header-BG : #E5F3F2
+idea-color : #00A79D
+box-color : #6D6E71
+
+saveBTN-BG : #00A79D
+saveBTN-color :#FFFFFF
+
+^:hover-BG : #045555
+^:color: #FFFFFF
+
+text-headers : #6D6E71
+text-paragraphs : #939598
+rating-color : #6D6E71
+border-color : #D1D3D4
+*/
+
 * {
   box-sizing: border-box;
 }
