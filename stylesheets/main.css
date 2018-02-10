@@ -1,23 +1,159 @@
-/* Project-Specs
-Header-Text : Roboto Slab 700 / serif
-Body-Text : Open Sans / sans-serif
-
-Header-BG : #E5F3F2
-idea-color : #00A79D
-box-color : #6D6E71
-
-saveBTN-BG : #00A79D
-saveBTN-color :#FFFFFF
-
-^:hover-BG : #045555
-^:color: #FFFFFF
-
-text-headers : #6D6E71
-text-paragraphs : #939598
-rating-color : #6D6E71
-border-color : #D1D3D4
-*/
-
 * {
   box-sizing: border-box;
 }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #939598;
+}
+
+.header {
+  background-color: #E5F3F2;
+}
+
+.header-title {
+  color: #00A79D;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  text-align: center;
+  font-size: 40px;
+  padding: 20px 0;
+  letter-spacing: 1px;
+}
+
+.header-title-b {
+  color: #6D6E71;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  width: 60%;
+  margin: auto;
+}
+
+.title-input,
+.body-input,
+.search-input,
+.save-button {
+  display: block;
+  width: 450px;
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 17px;
+}
+
+.title-input,
+.body-input,
+.save-input {
+  border: solid 1px #D1D3D4;
+}
+
+::placeholder {
+  color: #D1D3D4;
+}
+
+.save-button {
+  background-color: #00A79D;
+  color: #FFFFFF;
+  border: none;
+  letter-spacing: 0.5px;
+}
+
+.save-button:hover {
+  background-color: #045E55;
+}
+
+.search-section {
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  margin: 20px 0 25px 0;
+}
+
+.card-container {
+  font-family: 'Open Sans', sans-serif;
+  border-bottom: 1px solid #D1D3D4;
+  width: 450px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+.card-title {
+  font-family: 'Roboto Slab', serif;
+  color: #6D6E71;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.delete-button,
+.upvote-button,
+.downvote-button {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-repeat: no-repeat;
+}
+
+.upvote-button,
+.downvote-button {
+  padding-bottom: 5px;
+}
+
+.delete-button {
+  background-image: url("../images/delete.svg");
+  float: right;
+}
+
+.delete-button:hover {
+  background-image: url("../images/delete-hover.svg")
+}
+
+.upvote-button {
+  background-image: url("../images/upvote.svg");
+  margin-right: 10px;
+}
+
+.upvote-button:hover {
+  background-image: url("../images/upvote-hover.svg");
+}
+
+.downvote-button {
+  background-image: url("../images/downvote.svg");
+  margin-right: 10px;
+}
+
+.downvote-button:hover {
+  background-image: url("../images/downvote-hover.svg");
+}
+
+.card-title,
+.quality-text {
+  display: inline;
+}
+.card-body {
+  color: #939598;
+  margin: 15px 0 20px 0;
+  line-height: 115%;
+}
+
+.quality-text {
+  font-family: 'Roboto Slab', serif;
+  font-size: 14px;
+}
+
+.vote-quality {
+  font-family: 'Open Sans', sans-serif;
+  color: #6D6E71;
+}
+
+
+
+
+
+
+
+
+
