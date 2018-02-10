@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Idea Box</title>  
+  <title>Idea Box</title> 
+  <link rel="icon" type="image/png" href="http://icons.iconarchive.com/icons/greg-barnes/batman-rogues/256/Riddler-icon.png"> 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab:400,700" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="./stylesheets/reset.css">
   <link rel="stylesheet" type="text/css" href="./stylesheets/main.css">
@@ -12,7 +13,8 @@
 
   <header class="header">
     <h1 class="header-title">idea<span class="header-title-b">box</span></h1>
-    <form class="form header-form">
+    <div class="form-container">
+      <form class="form header-form">
       <label for="title-input">
         <input class="input title-input" type="text" placeholder="Title">
       </label>
@@ -20,7 +22,8 @@
         <input class="input body-input" type="textarea" placeholder="Body">
       </label>
       <button class="button save-button">save</button>
-    </form>
+      </form>
+    </div>
   </header>
 
   <section class="search-section">
@@ -34,10 +37,10 @@
   <section class="card-area">
     <article class="card-container">
       <h2 class="card-title">Example Idea 1</h2>
-      <button class="button delete-button">x</button>
+      <button class="button delete-button"></button>
       <p class="card-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga autem aperiam doloribus, iusto at magnam consequuntur accusantium, molestiae, nulla, odit placeat ad excepturi vitae numquam nisi officiis dicta. Vitae, commodi!</p>
-      <button class="button upvote-button">up</button>
-      <button class="button downvote-button">down</button>
+      <button class="button upvote-button"></button>
+      <button class="button downvote-button"></button>
       <p class="quality-text">quality: <span class="vote-quality">swill</span></p>
     </article>
   </section>
