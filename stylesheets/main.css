@@ -21,3 +21,76 @@ border-color : #D1D3D4
 * {
   box-sizing: border-box;
 }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #939598;
+}
+
+.input {
+  
+}
+
+.header {
+  background-color: #E5F3F2;
+}
+
+.header-title {
+  color: #00A79D;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+}
+
+.header-title-b {
+  color: #6D6E71;
+}
+
+.title-input,
+.save-input,
+.save-button {
+  display: block;
+}
+
+.save-button {
+  background-color: #00A79D;
+  color: #FFFFFF;
+}
+
+.save-button:hover {
+  background-color: #045E55;
+}
+
+.card-container {
+  font-family: 'Open Sans', sans-serif;
+  border-bottom: 1px solid #D1D3D4;
+}
+
+.card-title {
+  font-family: 'Roboto Slab', serif;
+  color: #6D6E71;
+}
+
+.card-title,
+.quality-text {
+  display: inline;
+}
+.card-body {
+  color: #939598;
+}
+
+.quality-text {
+  font-weight: 700;
+}
+
+.vote-quality {
+  color: #6D6E71;
+}
+
+
+
+
+
+
+
+
+
