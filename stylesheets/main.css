@@ -42,6 +42,9 @@ body {
   padding: 5px;
   font-size: 17px;
 }
+.button:focus {
+  outline: none;
+}
 
 .title-input,
 .body-input,
@@ -64,6 +67,13 @@ body {
   background-color: #045E55;
 }
 
+.save-button:disabled {
+  opacity: 0.5;
+}
+.save-button:disabled:hover {
+  background-color: #00A79D;
+}
+
 .search-section {
   display: flex;
   justify-content: center;
@@ -77,7 +87,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   border-bottom: 1px solid #D1D3D4;
   width: 450px;
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
   padding-bottom: 20px;
 }
 
@@ -133,6 +143,7 @@ body {
 .quality-text {
   display: inline;
 }
+
 .card-body {
   color: #939598;
   margin: 15px 0 20px 0;
