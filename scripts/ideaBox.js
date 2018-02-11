@@ -1,3 +1,4 @@
+window.onload = getIdeas();
 $('.save-button').on('click', prependCard);
 $('.title-input').on('keyup', toggleSaveButton);
 $('.body-input').on('keyup', toggleSaveButton);
@@ -5,14 +6,12 @@ $('.card-area').on('click', '.delete-button', deleteCard);
 $('.card-area').on('click', '.upvote-button', upvote);
 $('.card-area').on('click', '.downvote-button', downvote);
 
-function createCard() {
-  var titleInput = $('.title-input').val();
-  var bodyInput = $('.body-input').val();
+function createCard(newCard) {
   return (`
-    <article class="card-container">
-      <h2 class="card-title">${titleInput}</h2>
+    <article class="card-container" id="${newCard.id}">
+      <h2 class="card-title">${newCard.title}</h2>
       <button class="button delete-button"></button>
-      <p class="card-body">${bodyInput}</p>
+      <p class="card-body">${newCard.body}</p>
       <button class="button upvote-button"></button>
       <button class="button downvote-button"></button>
       <p class="quality-text">quality: <span class="vote-quality">swill</span></p>
@@ -20,12 +19,36 @@ function createCard() {
   `);
 }
 
+
+function ObjectFactory(title, body) {
+  this.id = $.now();
+  this.title = title;
+  this.body = body;
+}
+
 function prependCard(e) {
   e.preventDefault();
-  $('.card-area').prepend(createCard());
+  var titleInput = $('.title-input').val();
+  var bodyInput = $('.body-input').val();
+  var newCard = new ObjectFactory(titleInput, bodyInput);
+  var uniqueId = newCard.id;
+  console.log(uniqueId);
+  var stringifyCard = JSON.stringify(newCard);
+  localStorage.setItem(uniqueId, stringifyCard);
+  $('.card-area').prepend(createCard(newCard));
   clearInputs();
   toggleSaveButton();
 };
+
+function getIdeas() {
+ for(var i = 0; i < localStorage.length; i++) {
+  var getIdea = localStorage.getItem(localStorage.key(i));
+  var parseIdea = JSON.parse(getIdea);
+  $('.card-area').prepend(createCard(parseIdea));
+  clearInputs();
+  toggleSaveButton();
+ }
+}
 
 function clearInputs() {
   $('.title-input').val('').focus();
@@ -60,6 +83,7 @@ function downvote() {
     } else if (voteQuality.text() === 'plausible') {
       voteQuality.text('swill');
     };
-}
+};
+
 
 
