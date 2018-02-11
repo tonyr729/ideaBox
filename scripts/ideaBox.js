@@ -2,21 +2,8 @@ $('.save-button').on('click', prependCard);
 $('.title-input').on('keyup', toggleSaveButton);
 $('.body-input').on('keyup', toggleSaveButton);
 $('.card-area').on('click', '.delete-button', deleteCard);
-$('.card-area').on('click', '.upvote-button', function() {
-    if ($('.vote-quality').text() === 'swill') {
-      $('.vote-quality').text('plausible'); 
-    } else if ($('.vote-quality').text() === 'plausible') {
-      $('.vote-quality').text('genius');
-    };
-});
-
-$('.card-area').on('click', '.downvote-button', function() {
-    if ($('.vote-quality').text() === 'genius') {
-      $('.vote-quality').text('plausible'); 
-    } else if ($('.vote-quality').text() === 'plausible') {
-      $('.vote-quality').text('swill');
-    };
-});
+$('.card-area').on('click', '.upvote-button', upvote);
+$('.card-area').on('click', '.downvote-button', downvote);
 
 function createCard() {
   var titleInput = $('.title-input').val();
@@ -57,6 +44,22 @@ function deleteCard() {
   $(this).parent().remove();
 }
 
+function upvote() {
+  var voteQuality = $(this).next().next().children();
+   if (voteQuality.text() === 'swill') {
+      voteQuality.text('plausible'); 
+    } else if (voteQuality.text() === 'plausible') {
+      voteQuality.text('genius');
+    };
+}
 
+function downvote() {
+  var voteQuality = $(this).next().children();
+  if (voteQuality.text() === 'genius') {
+      voteQuality.text('plausible'); 
+    } else if (voteQuality.text() === 'plausible') {
+      voteQuality.text('swill');
+    };
+}
 
 
