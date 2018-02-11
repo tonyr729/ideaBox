@@ -14,25 +14,22 @@ function createCard(newCard) {
       <p class="card-body">${newCard.body}</p>
       <button class="button upvote-button"></button>
       <button class="button downvote-button"></button>
-      <p class="quality-text">quality: <span class="vote-quality">swill</span></p>
+      <p class="quality-text">quality: <span class="vote-quality">${newCard.voteQuality}</span></p>
     </article>
   `);
 }
 
-
-function ObjectFactory(title, body) {
+function CardFactory(title, body) {
   this.id = $.now();
   this.title = title;
   this.body = body;
+  this.voteQuality = 'swill';
 }
 
 function prependCard(e) {
   e.preventDefault();
-  var titleInput = $('.title-input').val();
-  var bodyInput = $('.body-input').val();
-  var newCard = new ObjectFactory(titleInput, bodyInput);
+  var newCard = new CardFactory($('.title-input').val(), $('.body-input').val());
   var uniqueId = newCard.id;
-  console.log(uniqueId);
   var stringifyCard = JSON.stringify(newCard);
   localStorage.setItem(uniqueId, stringifyCard);
   $('.card-area').prepend(createCard(newCard));
@@ -64,25 +61,37 @@ function toggleSaveButton() {
 }
 
 function deleteCard() {
-  $(this).parent().remove();
+  var remover = $(this).parent();
+  localStorage.removeItem(remover[0].id);
+  remover.remove();
 }
 
 function upvote() {
-  var voteQuality = $(this).next().next().children();
-   if (voteQuality.text() === 'swill') {
-      voteQuality.text('plausible'); 
-    } else if (voteQuality.text() === 'plausible') {
-      voteQuality.text('genius');
+  var voteText = $(this).next().next().children();
+  var idFinder = $(this).parent()[0].id;
+  var voteStorage = JSON.parse(localStorage.getItem(idFinder));
+   if (voteText.text() === 'swill') {
+      voteText.text('plausible');
+      voteStorage.voteQuality = 'plausible';
+    } else if (voteText.text() === 'plausible') {
+      voteText.text('genius');
+      voteStorage.voteQuality = 'genius';
     };
+  localStorage.setItem(idFinder, JSON.stringify(voteStorage));
 }
 
 function downvote() {
-  var voteQuality = $(this).next().children();
-  if (voteQuality.text() === 'genius') {
-      voteQuality.text('plausible'); 
-    } else if (voteQuality.text() === 'plausible') {
-      voteQuality.text('swill');
+  var voteText = $(this).next().children();
+  var idFinder = $(this).parent()[0].id;
+  var voteStorage = JSON.parse(localStorage.getItem(idFinder));
+  if (voteText.text() === 'genius') {
+      voteText.text('plausible');
+      voteStorage.voteQuality = 'plausible'; 
+    } else if (voteText.text() === 'plausible') {
+      voteText.text('swill');
+      voteStorage.voteQuality = 'swill';
     };
+  localStorage.setItem(idFinder, JSON.stringify(voteStorage));
 };
 
 
