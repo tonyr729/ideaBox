@@ -3,8 +3,8 @@
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
   color: #939598;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .header {
@@ -14,11 +14,11 @@ body {
 .header-title {
   color: #00A79D;
   font-family: 'Roboto Slab', serif;
-  font-weight: 700;
-  text-align: center;
   font-size: 40px;
-  padding: 20px 0;
+  font-weight: 700;
   letter-spacing: 1px;
+  padding: 20px 0;
+  text-align: center;
 }
 
 .header-title-b {
@@ -28,28 +28,34 @@ body {
 .form-container {
   display: flex;
   justify-content: center;
-  width: 60%;
   margin: auto;
+  width: 60%;
 }
 
-.title-input,
 .body-input,
+.save-button,
 .search-input,
-.save-button {
+.title-input {
   display: block;
-  width: 450px;
+  font-size: 17px;
   margin-bottom: 10px;
   padding: 5px;
-  font-size: 17px;
+  width: 450px;
 }
+
 .button:focus {
   outline: none;
 }
-
-.title-input,
+ 
 .body-input,
-.save-input {
+.search-input,
+.title-input {
   border: solid 1px #D1D3D4;
+}
+
+.body-input {
+  height: 32px;
+  resize: none;      
 }
 
 ::placeholder {
@@ -58,8 +64,8 @@ body {
 
 .save-button {
   background-color: #00A79D;
-  color: #FFFFFF;
   border: none;
+  color: #FFFFFF;
   letter-spacing: 0.5px;
 }
 
@@ -70,6 +76,7 @@ body {
 .save-button:disabled {
   opacity: 0.5;
 }
+
 .save-button:disabled:hover {
   background-color: #00A79D;
 }
@@ -84,31 +91,31 @@ body {
 }
 
 .card-container {
-  font-family: 'Open Sans', sans-serif;
   border-bottom: 1px solid #D1D3D4;
-  width: 450px;
+  font-family: 'Open Sans', sans-serif;
   margin: 0 auto 20px auto;
   padding-bottom: 20px;
+  width: 450px;
 }
 
 .card-title {
-  font-family: 'Roboto Slab', serif;
   color: #6D6E71;
-  font-weight: 700;
+  font-family: 'Roboto Slab', serif;
   font-size: 24px;
+  font-weight: 700;
 }
 
 .delete-button,
-.upvote-button,
-.downvote-button {
-  width: 20px;
-  height: 20px;
-  border: none;
+.downvote-button, 
+.upvote-button {
   background-repeat: no-repeat;
+  border: none;
+  height: 20px;
+  width: 20px;
 }
 
-.upvote-button,
-.downvote-button {
+.downvote-button,
+.upvote-button {
   padding-bottom: 5px;
 }
 
@@ -146,8 +153,8 @@ body {
 
 .card-body {
   color: #939598;
-  margin: 15px 0 20px 0;
   line-height: 115%;
+  margin: 15px 0 20px 0;
 }
 
 .quality-text {
@@ -156,15 +163,44 @@ body {
 }
 
 .vote-quality {
-  font-family: 'Open Sans', sans-serif;
   color: #6D6E71;
+  font-family: 'Open Sans', sans-serif;
 }
 
+/* =======================================================
+   Media Queries
+   ======================================================= */
+@media only screen and (max-width: 550px) {
+  .form-container {
+    width: 90%;
+  }
 
+  .body-input,
+  .save-button,
+  .search-input,
+  .title-input {
+    width: 340px;
+  }
+}
 
+@media only screen and (max-width: 450px) {
+  .body-input,
+  .save-button, 
+  .search-input,
+  .title-input {
+    width: 260px;
+  }
 
+  .body-input {
+    height: 75px;
+  }
+}
 
-
-
-
-
+@media only screen and (max-width: 320px) {
+  .body-input,
+  .save-button,
+  .search-input,
+  .title-input {
+    width: 220px;
+  }
+}
