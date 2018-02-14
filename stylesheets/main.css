@@ -7,29 +7,19 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-.header {
-  background-color: #E5F3F2;
-}
-
-.header-title {
-  color: #00A79D;
-  font-family: 'Roboto Slab', serif;
-  font-size: 40px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  padding: 20px 0;
-  text-align: center;
-}
-
-.header-title-b {
-  color: #6D6E71;
-}
+/* =======================================================
+   Form Styling
+   ======================================================= */
 
 .form-container {
   display: flex;
   justify-content: center;
   margin: auto;
   width: 60%;
+}
+
+::placeholder {
+  color: #D1D3D4;
 }
 
 .body-input,
@@ -43,10 +33,6 @@ body {
   width: 450px;
 }
 
-.button:focus {
-  outline: none;
-}
- 
 .body-input,
 .search-input,
 .title-input {
@@ -58,8 +44,21 @@ body {
   resize: none;      
 }
 
-::placeholder {
-  color: #D1D3D4;
+.search-section {
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  margin: 20px 0 25px 0;
+}
+
+/* =======================================================
+   Button Styling
+   ======================================================= */
+
+.button:focus {
+  outline: none;
 }
 
 .save-button {
@@ -81,30 +80,6 @@ body {
   background-color: #00A79D;
 }
 
-.search-section {
-  display: flex;
-  justify-content: center;
-}
-
-.search-input {
-  margin: 20px 0 25px 0;
-}
-
-.card-container {
-  border-bottom: 1px solid #D1D3D4;
-  font-family: 'Open Sans', sans-serif;
-  margin: 0 auto 20px auto;
-  padding-bottom: 20px;
-  width: 450px;
-}
-
-.card-title {
-  color: #6D6E71;
-  font-family: 'Roboto Slab', serif;
-  font-size: 24px;
-  font-weight: 700;
-}
-
 .delete-button,
 .downvote-button, 
 .upvote-button {
@@ -114,11 +89,6 @@ body {
   width: 20px;
 }
 
-.downvote-button,
-.upvote-button {
-  padding-bottom: 5px;
-}
-
 .delete-button {
   background-image: url("../images/delete.svg");
   float: right;
@@ -126,6 +96,11 @@ body {
 
 .delete-button:hover {
   background-image: url("../images/delete-hover.svg")
+}
+
+.downvote-button,
+.upvote-button {
+  padding-bottom: 5px;
 }
 
 .upvote-button {
@@ -144,6 +119,47 @@ body {
 
 .downvote-button:hover {
   background-image: url("../images/downvote-hover.svg");
+}
+
+/* =======================================================
+   Header Styling
+   ======================================================= */
+
+.header {
+  background-color: #E5F3F2;
+}
+
+.header-title {
+  color: #00A79D;
+  font-family: 'Roboto Slab', serif;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.header-title-b {
+  color: #6D6E71;
+}
+
+/* =======================================================
+   Created Card Styling
+   ======================================================= */
+
+.card-container {
+  border-bottom: 1px solid #D1D3D4;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0 auto 20px auto;
+  padding-bottom: 20px;
+  width: 450px;
+}
+
+.card-title {
+  color: #6D6E71;
+  font-family: 'Roboto Slab', serif;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .card-title,
