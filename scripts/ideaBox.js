@@ -5,13 +5,16 @@ $('.body-input').on('keyup', toggleSaveButton);
 $('.card-area').on('click', '.delete-button', deleteCard);
 $('.card-area').on('click', '.upvote-button', upvote);
 $('.card-area').on('click', '.downvote-button', downvote);
+$('.card-area').on('keyup', '.card-title', editTitle);
+$('.card-area').on('keyup', '.card-body', editBody);
+$('.search-input').on('keyup', filterCards);
 
 function createCard(newCard) {
   return (`
     <article class="card-container" id="${newCard.id}">
-      <h2 class="card-title">${newCard.title}</h2>
+      <h2 class="card-title" contenteditable="true">${newCard.title}</h2>
       <button class="button delete-button"></button>
-      <p class="card-body">${newCard.body}</p>
+      <p class="card-body" contenteditable="true">${newCard.body}</p>
       <button class="button upvote-button"></button>
       <button class="button downvote-button"></button>
       <p class="quality-text">quality: <span class="vote-quality">${newCard.voteQuality}</span></p>
@@ -92,6 +95,32 @@ function downvote() {
       voteStorage.voteQuality = 'swill';
     };
   localStorage.setItem(idFinder, JSON.stringify(voteStorage));
+};
+
+function editTitle(e) {
+  var idFinder = $(this).parent()[0].id;
+  var ideaStorage = JSON.parse(localStorage.getItem(idFinder));
+  if (e.keyCode === 13 || $('.card-area').blur()) {
+    $('.card-title').val();
+    ideaStorage.title = $('.card-title').text();
+    localStorage.setItem(idFinder, JSON.stringify(ideaStorage));
+  }
+  if (e.keyCode === 13 ){
+    $('.title-input').focus();
+  }
+};
+
+function editBody(e) {
+  var idFinder = $(this).parent()[0].id;
+  var ideaStorage = JSON.parse(localStorage.getItem(idFinder));
+  if (e.keyCode === 13) {
+    $('.card-body').val();
+    ideaStorage.body = $('.card-body').text();
+    localStorage.setItem(idFinder, JSON.stringify(ideaStorage));
+  }
+  if (e.keyCode === 13 ) {
+    $('.title-input').focus();
+  }
 };
 
 
