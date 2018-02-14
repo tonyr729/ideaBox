@@ -123,5 +123,21 @@ function editBody(e) {
   }
 };
 
-
+function filterCards(e) {
+  e.preventDefault();
+  var titleArray = [$('.card-title')][0];
+  var bodyArray = [$('.card-body')][0];
+  $('.card-container').hide();
+  for (var i = 0; i < titleArray.length; i++) {
+    if ($('.search-input').val().toLowerCase() === titleArray[i].innerText.toLowerCase()) {
+        titleArray[i].parentElement.style.display = 'block';
+    }
+    if ($('.search-input').val().toLowerCase() === bodyArray[i].innerText.toLowerCase()) {
+        bodyArray[i].parentElement.style.display = 'block';
+    }
+  }
+  if ($('.search-input').val() === "") {
+    $('.card-container').show();
+  }
+}
 
