@@ -3,80 +3,45 @@
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
   color: #939598;
+  font-family: 'Open Sans', sans-serif;
 }
 
-.header {
-  background-color: #E5F3F2;
-}
-
-.header-title {
-  color: #00A79D;
-  font-family: 'Roboto Slab', serif;
-  font-weight: 700;
-  text-align: center;
-  font-size: 40px;
-  padding: 20px 0;
-  letter-spacing: 1px;
-}
-
-.header-title-b {
-  color: #6D6E71;
-}
+/* =======================================================
+   Form Styling
+   ======================================================= */
 
 .form-container {
   display: flex;
   justify-content: center;
-  width: 60%;
   margin: auto;
-}
-
-.title-input,
-.body-input,
-.search-input,
-.save-button {
-  display: block;
-  width: 450px;
-  margin-bottom: 10px;
-  padding: 5px;
-  font-size: 17px;
-}
-.button:focus {
-  outline: none;
-}
-
-.title-input,
-.body-input,
-.search-input {
-  border: solid 1px #D1D3D4;
-}
-
-.body-input {
-  height: 32px;
-  resize: none;      
+  width: 60%;
 }
 
 ::placeholder {
   color: #D1D3D4;
 }
 
-.save-button {
-  background-color: #00A79D;
-  color: #FFFFFF;
-  border: none;
-  letter-spacing: 0.5px;
+.body-input,
+.save-button,
+.search-input,
+.title-input {
+  display: block;
+  font-size: 17px;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 450px;
 }
 
-.save-button:hover {
-  background-color: #045E55;
+.body-input,
+.search-input,
+.title-input {
+  border: solid 1px #D1D3D4;
 }
 
-.save-button:disabled {
-  opacity: 0.5;
-}
-.save-button:disabled:hover {
-  background-color: #00A79D;
+.body-input {
+  height: 32px;
+  resize: none;      
 }
 
 .search-section {
@@ -88,33 +53,40 @@ body {
   margin: 20px 0 25px 0;
 }
 
-.card-container {
-  font-family: 'Open Sans', sans-serif;
-  border-bottom: 1px solid #D1D3D4;
-  width: 450px;
-  margin: 0 auto 20px auto;
-  padding-bottom: 20px;
+/* =======================================================
+   Button Styling
+   ======================================================= */
+
+.button:focus {
+  outline: none;
 }
 
-.card-title {
-  font-family: 'Roboto Slab', serif;
-  color: #6D6E71;
-  font-weight: 700;
-  font-size: 24px;
+.save-button {
+  background-color: #00A79D;
+  border: none;
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
+}
+
+.save-button:hover {
+  background-color: #045E55;
+}
+
+.save-button:disabled {
+  opacity: 0.5;
+}
+
+.save-button:disabled:hover {
+  background-color: #00A79D;
 }
 
 .delete-button,
-.upvote-button,
-.downvote-button {
-  width: 20px;
-  height: 20px;
-  border: none;
+.downvote-button, 
+.upvote-button {
   background-repeat: no-repeat;
-}
-
-.upvote-button,
-.downvote-button {
-  padding-bottom: 5px;
+  border: none;
+  height: 20px;
+  width: 20px;
 }
 
 .delete-button {
@@ -124,6 +96,11 @@ body {
 
 .delete-button:hover {
   background-image: url("../images/delete-hover.svg")
+}
+
+.downvote-button,
+.upvote-button {
+  padding-bottom: 5px;
 }
 
 .upvote-button {
@@ -144,6 +121,47 @@ body {
   background-image: url("../images/downvote-hover.svg");
 }
 
+/* =======================================================
+   Header Styling
+   ======================================================= */
+
+.header {
+  background-color: #E5F3F2;
+}
+
+.header-title {
+  color: #00A79D;
+  font-family: 'Roboto Slab', serif;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.header-title-b {
+  color: #6D6E71;
+}
+
+/* =======================================================
+   Created Card Styling
+   ======================================================= */
+
+.card-container {
+  border-bottom: 1px solid #D1D3D4;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0 auto 20px auto;
+  padding-bottom: 20px;
+  width: 450px;
+}
+
+.card-title {
+  color: #6D6E71;
+  font-family: 'Roboto Slab', serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
 .card-title,
 .quality-text {
   display: inline;
@@ -151,8 +169,8 @@ body {
 
 .card-body {
   color: #939598;
-  margin: 15px 0 20px 0;
   line-height: 115%;
+  margin: 15px 0 20px 0;
 }
 
 .quality-text {
@@ -161,28 +179,32 @@ body {
 }
 
 .vote-quality {
-  font-family: 'Open Sans', sans-serif;
   color: #6D6E71;
+  font-family: 'Open Sans', sans-serif;
 }
+
+/* =======================================================
+   Media Queries
+   ======================================================= */
 
 @media only screen and (max-width: 550px) {
   .form-container {
     width: 90%;
   }
 
-  .title-input,
   .body-input,
+  .save-button,
   .search-input,
-  .save-button {
+  .title-input {
     width: 340px;
   }
 }
 
 @media only screen and (max-width: 450px) {
-  .title-input,
   .body-input,
+  .save-button, 
   .search-input,
-  .save-button {
+  .title-input {
     width: 260px;
   }
 
@@ -192,10 +214,10 @@ body {
 }
 
 @media only screen and (max-width: 320px) {
-  .title-input,
   .body-input,
+  .save-button,
   .search-input,
-  .save-button {
+  .title-input {
     width: 220px;
   }
 }
