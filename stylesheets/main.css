@@ -48,8 +48,13 @@ body {
 
 .title-input,
 .body-input,
-.save-input {
+.search-input {
   border: solid 1px #D1D3D4;
+}
+
+.body-input {
+  height: 32px;
+  resize: none;      
 }
 
 ::placeholder {
@@ -160,11 +165,37 @@ body {
   color: #6D6E71;
 }
 
+@media only screen and (max-width: 550px) {
+  .form-container {
+    width: 90%;
+  }
 
+  .title-input,
+  .body-input,
+  .search-input,
+  .save-button {
+    width: 340px;
+  }
+}
 
+@media only screen and (max-width: 450px) {
+  .title-input,
+  .body-input,
+  .search-input,
+  .save-button {
+    width: 260px;
+  }
 
+  .body-input {
+    height: 75px;
+  }
+}
 
-
-
-
-
+@media only screen and (max-width: 320px) {
+  .title-input,
+  .body-input,
+  .search-input,
+  .save-button {
+    width: 220px;
+  }
+}
