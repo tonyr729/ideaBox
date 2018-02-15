@@ -32,9 +32,8 @@ function CardFactory(title, body) {
 function prependCard(e) {
   e.preventDefault();
   var newCard = new CardFactory($('.title-input').val(), $('.body-input').val());
-  var uniqueId = newCard.id;
   var stringifyCard = JSON.stringify(newCard);
-  localStorage.setItem(uniqueId, stringifyCard);
+  localStorage.setItem(newCard.id, stringifyCard);
   $('.card-area').prepend(createCard(newCard));
   clearInputs();
   toggleSaveButton();
@@ -62,9 +61,8 @@ function toggleSaveButton() {
 };
 
 function deleteCard() {
-  var remover = $(this).parent();
-  localStorage.removeItem(remover[0].id);
-  remover.remove();
+  localStorage.removeItem($(this).parent()[0].id);
+  $(this).parent().remove();
 };
 
 function upvote() {
@@ -99,7 +97,6 @@ function editTitle(e) {
   var idFinder = $(this).parent()[0].id;
   var ideaStorage = JSON.parse(localStorage.getItem(idFinder));
   if (e.keyCode === 13 || $('.card-area').blur()) {
-    $('.card-title').val();
     ideaStorage.title = $('.card-title').text();
     localStorage.setItem(idFinder, JSON.stringify(ideaStorage));
   };
@@ -111,8 +108,8 @@ function editTitle(e) {
 function editBody(e) {
   var idFinder = $(this).parent()[0].id;
   var ideaStorage = JSON.parse(localStorage.getItem(idFinder));
-  if (e.keyCode === 13) {
-    $('.card-body').val();
+  if (e.keyCode === 13 || $('.card-area').blur()) {
+    // $('.card-body').val();
     ideaStorage.body = $('.card-body').text();
     localStorage.setItem(idFinder, JSON.stringify(ideaStorage));
   };
