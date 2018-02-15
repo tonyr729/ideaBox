@@ -109,7 +109,6 @@ function editBody(e) {
   var idFinder = $(this).parent()[0].id;
   var ideaStorage = JSON.parse(localStorage.getItem(idFinder));
   if (e.keyCode === 13 || $('.card-area').blur()) {
-    // $('.card-body').val();
     ideaStorage.body = $('.card-body').text();
     localStorage.setItem(idFinder, JSON.stringify(ideaStorage));
   };
