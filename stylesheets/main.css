@@ -57,10 +57,6 @@ body {
    Button Styling
    ======================================================= */
 
-.button:focus {
-  outline: none;
-}
-
 .save-button {
   background-color: #00A79D;
   border: none;
