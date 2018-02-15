@@ -8,16 +8,17 @@ $('.card-area').on('click', '.downvote-button', downvote);
 $('.card-area').on('keyup', '.card-title', editTitle);
 $('.card-area').on('keyup', '.card-body', editBody);
 $('.search-input').on('keyup', filterCards);
+$(".smush").on('click', smush);
 
 function createCard(newCard) {
   return (`
     <article class="card-container" id="${newCard.id}">
       <h2 class="card-title" contenteditable="true">${newCard.title}</h2>
-      <button class="button delete-button"></button>
+      <button class="button delete-button" aria-label="delete card"></button>
       <p class="card-body" contenteditable="true">${newCard.body}</p>
-      <button class="button upvote-button"></button>
-      <button class="button downvote-button"></button>
-      <p class="quality-text">quality: <span class="vote-quality">${newCard.voteQuality}</span></p>
+      <button class="button upvote-button" aria-label="upvote card"></button>
+      <button class="button downvote-button" aria-label="downvote card"></button>
+      <p class="quality-text" aria-label="quality ${newCard.voteQuality}" tabindex="0" aria-live="assertive" aria-atomic="true">quality: <span class="vote-quality">${newCard.voteQuality}</span></p>
     </article>
   `);
 };
@@ -134,3 +135,9 @@ function searchCards(cards, searchVal) {
     return 'none';    
   };
 };
+
+function smush() {
+  window.open(
+    'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+  );
+}
