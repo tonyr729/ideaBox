@@ -12,27 +12,28 @@
 <body>
   <header class="header">
     <h1 class="header-title">idea<span class="header-title-b">box</span></h1>
-    <div class="form-container">
-      <form class="form header-form">
+    <main class="form-container">
+      <form class="form header-form" role="input title and body">
       <label for="title-input">
-        <input class="input title-input" type="text" placeholder="Title">
+        <input class="input title-input" type="text" placeholder="Title" aria-required="true" aria-label="Input an idea title">
       </label>
       <label for="body-input">
-        <textarea class="input body-input" placeholder="Body"></textarea>
+        <textarea class="input body-input" placeholder="Body" aria-required="true" aria-label="Input idea body text"></textarea>
       </label>
       <button class="button save-button" disabled>save</button>
       </form>
-    </div>
+    </main>
   </header>
   <section class="search-section">
-    <form class="form search-form">
+    <form class="form search-form" role="search">
       <label for="search-input">
-        <input class="input search-input" type="text" placeholder="Search">
+        <input class="input search-input" type="text" placeholder="Search" aria-label="This is the search field">
       </label>
     </form>
   </section>
   <section class="card-area">
   </section>
+  <span class="smush">.</span>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="./scripts/ideaBox.js"></script>
 </body>
