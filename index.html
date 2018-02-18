@@ -11,24 +11,25 @@
 </head>
 <body>
   <header class="header">
-    <h1 class="header-title">idea<span class="header-title-b">box</span></h1>
+    <h1 class="header-title">ToDo<span class="header-title-b">Box</span></h1>
     <main class="form-container">
-      <form class="form header-form" role="input title and body">
+      <form class="form header-form" role="input title and task">
       <label for="title-input">
         <input class="input title-input" type="text" placeholder="Title" aria-required="true" aria-label="Input an idea title">
       </label>
-      <label for="body-input">
-        <textarea class="input body-input" placeholder="Body" aria-required="true" aria-label="Input idea body text"></textarea>
+      <label for="task-input">
+        <textarea class="input task-input" placeholder="Task" aria-required="true" aria-label="Input idea task text"></textarea>
       </label>
       <button class="button save-button" disabled>save</button>
       </form>
     </main>
   </header>
-  <section class="search-section">
-    <form class="form search-form" role="search">
-      <label for="search-input">
-        <input class="input search-input" type="text" placeholder="Search" aria-label="This is the search field">
+  <section class="filter-section">
+    <form class="form filter-form" role="filter">
+      <label for="filter-input">
+        <input class="input filter-input" type="text" placeholder="Filter" aria-label="This is where you filter results">
       </label>
+       <button class="show-button" aria-label="show completed card">Show Completed Tasks</button>
     </form>
   </section>
   <section class="card-area">
