@@ -22,9 +22,17 @@ body {
   color: #D1D3D4;
 }
 
-.body-input,
+.title-input {
+  display: block;
+  font-size: 17px;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 30%;
+}
+
+.task-input,
 .save-button,
-.search-input,
+.filter-input,
 .title-input {
   display: block;
   font-size: 17px;
@@ -33,23 +41,23 @@ body {
   width: 450px;
 }
 
-.body-input,
-.search-input,
+.task-input,
+.filter-input,
 .title-input {
   border: solid 1px #D1D3D4;
 }
 
-.body-input {
+.task-input {
   height: 32px;
   resize: none;      
 }
 
-.search-section {
+.filter-section {
   display: flex;
   justify-content: center;
 }
 
-.search-input {
+.filter-input {
   margin: 20px 0 25px 0;
 }
 
@@ -57,6 +65,7 @@ body {
    Button Styling
    ======================================================= */
 
+.show-button,
 .save-button {
   background-color: #00A79D;
   border: none;
@@ -64,16 +73,44 @@ body {
   letter-spacing: 0.5px;
 }
 
+.show-button {
+  padding: 4px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+  display: none;
+}
+
+.show-button:hover,
 .save-button:hover {
   background-color: #045E55;
 }
 
+.show-button:disabled,
 .save-button:disabled {
   opacity: 0.5;
 }
 
+.show-button:disabled:hover,
 .save-button:disabled:hover {
   background-color: #00A79D;
+}
+
+.complete-button {
+  background-color: #CBCCCD;
+  color: white;
+  height: 20px;
+  border-radius: 10%;
+  float: right;
+  width: 80px;
+}
+
+.transparent {
+  opacity: .4;
+}
+
+.complete-button:hover {
+  background-color: #808080;
 }
 
 .delete-button,
@@ -115,16 +152,6 @@ body {
 
 .downvote-button:hover {
   background-image: url("../images/downvote-hover.svg");
-}
-
-.smush {
-  position: absolute;
-  font-size: 55px;
-  bottom: 25px;
-  right: 50px;
-  text-decoration: none;
-  cursor: default;
-  color: #fff;
 }
 
 /* =======================================================
@@ -170,10 +197,10 @@ body {
 
 .card-title,
 .quality-text {
-  display: inline;
+  display: inline-block;
 }
 
-.card-body {
+.card-task {
   color: #939598;
   line-height: 115%;
   margin: 15px 0 20px 0;
@@ -198,34 +225,34 @@ body {
     width: 90%;
   }
 
-  .body-input,
+  .task-input,
   .card-container,
   .save-button,
-  .search-input,
+  .filter-input,
   .title-input {
     width: 340px;
   }
 }
 
 @media only screen and (max-width: 450px) {
-  .body-input,
+  .task-input,
   .card-container,
   .save-button, 
-  .search-input,
+  .filter-input,
   .title-input {
     width: 260px;
   }
 
-  .body-input {
+  .task-input {
     height: 75px;
   }
 }
 
 @media only screen and (max-width: 320px) {
-  .body-input,
+  .task-input,
   .card-container,
   .save-button,
-  .search-input,
+  .filter-input,
   .title-input {
     width: 220px;
   }
