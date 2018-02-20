@@ -1,6 +1,4 @@
 //TODO LIST
-//show completed cards
-//why is local storage only showing 1 object (ex. out of 4)
 //current line 100, figure out ternary operator for object.status
 
 
@@ -11,10 +9,19 @@ $('.card-area').on('click', '.delete-button', deleteCard);
 $('.card-area').on('click', '.upvote-button, .downvote-button', changeVote);
 $('.card-area').on('keyup', '.card-title, .card-task', editText);
 $('.card-area').on('click', '.complete-button', completeCard);
-$('.show-button').on('click', showComplete);
+$('.show-button').on('click', gatherComplete);
+$('.filter-form').on('click', '.none-button, .low-button, .normal-button, .high-button, .critical-button', sortImportance);
+
+function CardFactory(title, task) {
+  this.id = $.now();
+  this.title = title;
+  this.task = task;
+  this.voteQuality = 'normal';
+  this.status = 'incomplete';
+};
 
 $(function getIdeas() {
-  $.each(localStorage, prependStorage, showComplete);
+  $.each(localStorage, prependStorage);
 });   
 
 function prependStorage(index, element) {
@@ -26,27 +33,21 @@ function prependStorage(index, element) {
   }
 };
 
-function showComplete(event, index, element) {
-  console.log(index);
+function gatherComplete(event) {
   event.preventDefault();
+  $.each(localStorage, prependComplete);
+}
+
+function prependComplete(index, element) {
   var getIdea = JSON.parse(localStorage.getItem(index));
-  console.log(getIdea.status);
-  if (getIdea.status === 'complete') {
-    $('.card-area').prepend(transformCard(getIdea));
+  if (index >= localStorage.length && getIdea.status === 'complete') {
+    $('.card-area').prepend(transformCard(getIdea, 'transparent'));
   } 
 }
 
-function CardFactory(title, task) {
-  this.id = $.now();
-  this.title = title;
-  this.task = task;
-  this.voteQuality = 'normal';
-  this.status = 'incomplete';
-};
-
-function transformCard(newCard) {
+function transformCard(newCard, classname) {
   return (`
-    <article class="card-container" id="${newCard.id}">
+    <article class="card-container ${classname}" id="${newCard.id}">
       <h2 class="card-title" contenteditable="true">${newCard.title}</h2>
       <button class="button delete-button" aria-label="delete card"></button>
       <p class="card-task" contenteditable="true">${newCard.task}</p>
@@ -97,7 +98,11 @@ function deleteCard() {
 function completeCard() {
   var ideaObject = pullCardFromStorage(this);
   $(this).parent().toggleClass('transparent');
-  ideaObject.status = 'complete';
+  if(ideaObject.status === 'incomplete'){
+    ideaObject.status = 'complete';
+  } else {
+    ideaObject = 'incomplete';
+  }
   $('.show-button').prop('disabled', false);
   saveCardToStorage(ideaObject);
 };
@@ -144,6 +149,28 @@ function selectCards(e) {
   e.preventDefault();
   $.each($('.card-container'), changeCardDisplay)
 };
+
+function sortImportance(event) {
+  event.preventDefault;
+  var buttonText = $(this).text().toLowerCase();
+  var card = $(this).parentsUntil('filter-section').siblings('.card-area').children()
+  if (card.children('.quality-text').text().includes(buttonText)) {
+    card.show();
+  } else {
+    card.hide();
+  }
+
+}
+
+// function displayImportance () {
+//   debugger;
+//   if ($(this).text().indexOf(buttonText) > -1) {
+//   $(this).show();
+//   } else {
+//   $(this).hide();
+//   }
+// }
+
 
 function changeCardDisplay(index, element) {
   var filterValue = $('.filter-input').val().toLowerCase();
