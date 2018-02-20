@@ -81,6 +81,14 @@ body {
   display: none;
 }
 
+.quality-button {
+  padding: 4px 0;
+  display: inline-block;
+  width: 60px;
+  margin-left: 23px;
+  margin-bottom: 27px;
+}
+
 .show-button:hover,
 .save-button:hover {
   background-color: #045E55;
