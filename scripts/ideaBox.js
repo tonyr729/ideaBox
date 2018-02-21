@@ -94,7 +94,7 @@ function deleteCard() {
 function completeCard() {
   var ideaObject = pullCardFromStorage(this);
   $(this).parent().toggleClass('transparent');
-  ideaObject.status = ideaObject.status === 'incomplete' ? 'complete' :  'incomplete'
+  ideaObject.status = ideaObject.status === 'incomplete' ? 'complete' :  'incomplete';
   $('.show-button').prop('disabled', false);
   saveCardToStorage(ideaObject);
 };
@@ -143,7 +143,7 @@ function selectCards(e) {
 };
 
 function removeCards() {
-  $('.card-area').each(function() {
+  $('.card-container').each(function() {
     this.remove();
   })
 }
@@ -159,7 +159,6 @@ function cardsByImportance(buttonText) {
   for (var i = 0; i < localStorage.length; i++) {
     var parsedCard = JSON.parse(localStorage.getItem(localStorage.key(i)));
     if(parsedCard.voteQuality === buttonText) {
-      console.log('bang')
       prependCard(parsedCard);
     }
   }
