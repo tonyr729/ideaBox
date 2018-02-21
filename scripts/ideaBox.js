@@ -1,7 +1,3 @@
-//TODO LIST
-//current line 100, figure out ternary operator for object.status
-
-
 $('.save-button').on('click', createCard);
 $('.title-input, .task-input').on('keyup', toggleSaveButton);
 $('.filter-input').on('keyup', selectCards);
@@ -10,7 +6,7 @@ $('.card-area').on('click', '.upvote-button, .downvote-button', changeVote);
 $('.card-area').on('keyup', '.card-title, .card-task', editText);
 $('.card-area').on('click', '.complete-button', completeCard);
 $('.show-button').on('click', gatherComplete);
-$('.filter-form').on('click', '.none-button, .low-button, .normal-button, .high-button, .critical-button', sortImportance);
+$('.filter-form').on('click', '.none-button, .low-button, .normal-button, .high-button, .critical-button', displayCards);
 
 function CardFactory(title, task) {
   this.id = $.now();
@@ -98,11 +94,7 @@ function deleteCard() {
 function completeCard() {
   var ideaObject = pullCardFromStorage(this);
   $(this).parent().toggleClass('transparent');
-  if(ideaObject.status === 'incomplete'){
-    ideaObject.status = 'complete';
-  } else {
-    ideaObject = 'incomplete';
-  }
+  ideaObject.status = ideaObject.status === 'incomplete' ? 'complete' :  'incomplete';
   $('.show-button').prop('disabled', false);
   saveCardToStorage(ideaObject);
 };
@@ -150,27 +142,27 @@ function selectCards(e) {
   $.each($('.card-container'), changeCardDisplay)
 };
 
-function sortImportance(event) {
-  event.preventDefault;
-  var buttonText = $(this).text().toLowerCase();
-  var card = $(this).parentsUntil('filter-section').siblings('.card-area').children()
-  if (card.children('.quality-text').text().includes(buttonText)) {
-    card.show();
-  } else {
-    card.hide();
-  }
-
+function removeCards() {
+  $('.card-container').each(function() {
+    this.remove();
+  })
 }
 
-// function displayImportance () {
-//   debugger;
-//   if ($(this).text().indexOf(buttonText) > -1) {
-//   $(this).show();
-//   } else {
-//   $(this).hide();
-//   }
-// }
+function displayCards(event) {
+  event.preventDefault();
+  var buttonText = $(event.target).text().toLowerCase();
+  cardsByImportance(buttonText);
+}
 
+function cardsByImportance(buttonText) {
+  removeCards();
+  for (var i = 0; i < localStorage.length; i++) {
+    var parsedCard = JSON.parse(localStorage.getItem(localStorage.key(i)));
+    if(parsedCard.voteQuality === buttonText) {
+      prependCard(parsedCard);
+    }
+  }
+}
 
 function changeCardDisplay(index, element) {
   var filterValue = $('.filter-input').val().toLowerCase();
