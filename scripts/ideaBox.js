@@ -1,20 +1,14 @@
 $('.save-button').on('click', createCard);
+$('.save-button').on('click', showOnlyTen);
+$('.showall-button').on('click', showMoreThanTen);
 $('.title-input, .task-input').on('keyup', toggleSaveButton);
 $('.filter-input').on('keyup', selectCards);
 $('.card-area').on('click', '.delete-button', deleteCard);
 $('.card-area').on('click', '.upvote-button, .downvote-button', changeVote);
 $('.card-area').on('keyup', '.card-title, .card-task', editText);
 $('.card-area').on('click', '.complete-button', completeCard);
-$('.show-button').on('click', gatherComplete);
-$('.filter-form').on('click', '.none-button, .low-button, .normal-button, .high-button, .critical-button', displayCards);
-
-function CardFactory(title, task) {
-  this.id = $.now();
-  this.title = title;
-  this.task = task;
-  this.voteQuality = 'normal';
-  this.status = 'incomplete';
-};
+$('.showcompleted-button').on('click', gatherComplete);
+$('.filter-form').on('click', '.quality-button', displayCards);
 
 $(function getIdeas() {
   $.each(localStorage, prependStorage);
@@ -25,21 +19,26 @@ function prependStorage(index, element) {
   if (index >= localStorage.length && getIdea.status === 'incomplete') {
     $('.card-area').prepend(transformCard(getIdea));
   } else {
-    $('.show-button').css('display', 'block');
+    $('.showcompleted-button').css('display', 'block');
   }
 };
 
-function gatherComplete(event) {
-  event.preventDefault();
-  $.each(localStorage, prependComplete);
-}
+function CardFactory(title, task) {
+  this.id = $.now();
+  this.title = title;
+  this.task = task;
+  this.voteQuality = 'normal';
+  this.status = 'incomplete';
+};
 
-function prependComplete(index, element) {
-  var getIdea = JSON.parse(localStorage.getItem(index));
-  if (index >= localStorage.length && getIdea.status === 'complete') {
-    $('.card-area').prepend(transformCard(getIdea, 'transparent'));
-  } 
-}
+function createCard(e) {
+  e.preventDefault();
+  var newCard = new CardFactory($('.title-input').val(), $('.task-input').val());
+  saveCard(newCard);
+  prependCard(newCard);
+  clearInputs();
+  toggleSaveButton();
+};
 
 function transformCard(newCard, classname) {
   return (`
@@ -53,15 +52,6 @@ function transformCard(newCard, classname) {
       <button class="button complete-button" aria-label="complete card">Complete</button>
     </article>
   `);
-};
-
-function createCard(e) {
-  e.preventDefault();
-  var newCard = new CardFactory($('.title-input').val(), $('.task-input').val());
-  saveCard(newCard);
-  prependCard(newCard);
-  clearInputs();
-  toggleSaveButton();
 };
 
 function saveCard(newCard) {
@@ -86,6 +76,31 @@ function toggleSaveButton() {
   }
 };
 
+function showOnlyTen() {
+  var card = $('.card-container')
+  if (card.length > 10) {
+    $(card[10]).hide()
+    $('.showall-button').css("display", "block");
+  }
+}
+
+function showMoreThanTen() {
+  var card = $('.card-container')
+  $(card).show()
+}
+
+function gatherComplete(event) {
+  event.preventDefault();
+  $.each(localStorage, prependComplete);
+}
+
+function prependComplete(index, element) {
+  var getIdea = JSON.parse(localStorage.getItem(index));
+  if (index >= localStorage.length && getIdea.status === 'complete') {
+    $('.card-area').prepend(transformCard(getIdea, 'transparent'));
+  } 
+}
+
 function deleteCard() {
   localStorage.removeItem($(this).parent()[0].id);
   $(this).parent().remove();
@@ -95,7 +110,7 @@ function completeCard() {
   var ideaObject = pullCardFromStorage(this);
   $(this).parent().toggleClass('transparent');
   ideaObject.status = ideaObject.status === 'incomplete' ? 'complete' :  'incomplete';
-  $('.show-button').prop('disabled', false);
+  $('.showcompleted-button').prop('disabled', false);
   saveCardToStorage(ideaObject);
 };
 
@@ -166,8 +181,8 @@ function cardsByImportance(buttonText) {
 
 function changeCardDisplay(index, element) {
   var filterValue = $('.filter-input').val().toLowerCase();
-    element.style.display = filterTask(element.children, filterValue);
-  };
+  element.style.display = filterTask(element.children, filterValue);
+};
 
 function filterTask(cards, filterVal) {  
   if (cards[0].innerText.toLowerCase().includes(filterVal) 

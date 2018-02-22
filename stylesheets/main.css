@@ -65,7 +65,8 @@ body {
    Button Styling
    ======================================================= */
 
-.show-button,
+.showall-button,
+.showcompleted-button,
 .save-button {
   background-color: #00A79D;
   border: none;
@@ -73,12 +74,18 @@ body {
   letter-spacing: 0.5px;
 }
 
-.show-button {
+.showall-button,
+.showcompleted-button {
   padding: 4px;
   text-align: center;
   width: 100%;
   margin-bottom: 20px;
   display: none;
+}
+
+.showall-button {
+  width: 50%;
+  margin: 0 auto 20px;
 }
 
 .quality-button {
@@ -89,17 +96,18 @@ body {
   margin-bottom: 27px;
 }
 
-.show-button:hover,
+.showall-button:hover,
+.showcompleted-button:hover,
 .save-button:hover {
   background-color: #045E55;
 }
 
-.show-button:disabled,
+.showcompleted-button:disabled,
 .save-button:disabled {
   opacity: 0.5;
 }
 
-.show-button:disabled:hover,
+.showcompleted-button:disabled:hover,
 .save-button:disabled:hover {
   background-color: #00A79D;
 }
@@ -232,17 +240,26 @@ body {
   .form-container {
     width: 90%;
   }
-
+  
+  .showall-button,
+  .showcompleted-button,
   .task-input,
   .card-container,
   .save-button,
   .filter-input,
   .title-input {
     width: 340px;
+    margin: 20px auto;
+  }
+
+  .quality-button {
+    margin-left: 4px;
   }
 }
 
 @media only screen and (max-width: 450px) {
+  .showall-button,
+  .showcompleted-button,
   .task-input,
   .card-container,
   .save-button, 
@@ -254,9 +271,15 @@ body {
   .task-input {
     height: 75px;
   }
+
+  .quality-button {
+    width: 44px;
+  }
 }
 
 @media only screen and (max-width: 320px) {
+  .showall-button,
+  .showcompleted-button,
   .task-input,
   .card-container,
   .save-button,
